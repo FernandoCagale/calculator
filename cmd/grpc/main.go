@@ -6,6 +6,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
 	hproto "google.golang.org/grpc/health/grpc_health_v1"
+	"google.golang.org/grpc/reflection"
 	"log"
 	"net"
 	"os"
@@ -34,10 +35,13 @@ func main() {
 	s := grpc.NewServer()
 	pb.RegisterCalculatorServer(s, app)
 
+
 	// Server Health Check
 	health := health.NewServer()
 	health.SetServingStatus("", hproto.HealthCheckResponse_SERVING)
 	hproto.RegisterHealthServer(s, health)
+
+	reflection.Register(s)
 
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
