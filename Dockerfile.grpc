@@ -1,0 +1,16 @@
+## Builder Image
+FROM golang:1.13-stretch as builder
+ENV GO111MODULE=on
+COPY . /calculator
+WORKDIR /calculator
+RUN go get github.com/google/wire/cmd/wire
+RUN wire ./...
+RUN go mod download
+RUN CGO_ENABLED=0 GOOS=linux go build -o bin/application cmd/grpc/main.go cmd/grpc/wire_gen.go
+
+## Run Image
+FROM scratch
+COPY --from=builder /calculator/bin/application application
+COPY --from=builder /calculator/grpc/grpc-utils/grpc_health_probe grpc_health_probe
+EXPOSE 5000
+ENTRYPOINT ["./application"]
