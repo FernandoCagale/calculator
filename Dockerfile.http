@@ -6,6 +6,7 @@ WORKDIR /calculator
 RUN go get github.com/google/wire/cmd/wire
 RUN wire ./...
 RUN go mod download
+RUN go test ./... -v
 RUN CGO_ENABLED=0 GOOS=linux go build -o bin/application cmd/http/main.go cmd/http/wire_gen.go
 
 ## Run Image
