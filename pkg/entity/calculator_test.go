@@ -42,7 +42,7 @@ func Test_DiscountCalculator_Discount_Zero(t *testing.T) {
 
 	calculator.DiscountCalculator(time.Now(), user)
 
-	assert.Equal(t, 12000, calculator.Discount.ValueInCents)
+	assert.Equal(t, 0, calculator.Discount.ValueInCents)
 	assert.Equal(t, 0, calculator.Discount.Percentage)
 }
 

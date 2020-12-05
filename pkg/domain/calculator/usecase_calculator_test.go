@@ -16,7 +16,7 @@ func Test_Calculator_OK(t *testing.T) {
 	assert.Equal(t, calculator.Title, "Whisky Chivas")
 	assert.Equal(t, calculator.Description, "Chivas")
 	assert.Equal(t, calculator.PriceInCents, 12000)
-	assert.Equal(t, calculator.Discount.ValueInCents, 12000)
+	assert.Equal(t, calculator.Discount.ValueInCents, 0)
 	assert.Equal(t, calculator.Discount.Percentage, 0)
 }
 
