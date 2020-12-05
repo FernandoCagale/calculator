@@ -43,7 +43,9 @@ func (e *Calculator) DiscountCalculator(date time.Time, user *User) {
 }
 
 func (e *Calculator) calculate() {
-	e.Discount.ValueInCents = e.PriceInCents - (e.PriceInCents / 100 * e.Discount.Percentage)
+	if e.Discount.Percentage > 0 {
+		e.Discount.ValueInCents = e.PriceInCents - (e.PriceInCents / 100 * e.Discount.Percentage)
+	}
 }
 
 func (e *Calculator) isBlackFriday(date time.Time) bool {

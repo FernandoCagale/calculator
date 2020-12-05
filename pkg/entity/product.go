@@ -1,7 +1,7 @@
 package entity
 
 type Product struct {
-	ID           string `json:"id"`
+	ID           string `json:"id" bson:"_id"`
 	Title        string `json:"title"`
 	Description  string `json:"description"`
 	PriceInCents int    `json:"price_in_cents"`
