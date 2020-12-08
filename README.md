@@ -1,6 +1,6 @@
 # calculator
 
-[![Build Status](https://travis-ci.org/FernandoCagale/calculator.svg?branch=master)](https://travis-ci.org/FernandoCagale/calculator)
+[![Build Status](https://travis-ci.org/FernandoCagale/calculator.svg?branch=main)](https://travis-ci.org/FernandoCagale/calculator)
 
 ### Docker
 
